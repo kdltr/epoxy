@@ -1,0 +1,8 @@
+- Test build on windows
+- Test build on macos
+- Test build on BSDs
+- Test static linking
+- Test linux -> mingw cross-compilation
+- EGL module
+- GLX module
+- WGL module

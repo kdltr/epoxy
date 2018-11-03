@@ -1,0 +1,4 @@
+(repo git "git://upyum.com/epoxy")
+(uri targz "http://www.upyum.com/cgit.cgi/{egg-name}/snapshot/{egg-name}-{egg-release}.tar.gz")
+
+(release "0.1.0")
