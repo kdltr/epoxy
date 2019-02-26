@@ -1,5 +1,5 @@
 (module epoxy *
-(import (except scheme begin list?)
+(import scheme
         (chicken base)
         (chicken foreign)
         (chicken platform)
@@ -7,8 +7,24 @@
 
 (foreign-declare "#include <epoxy/gl.h>")
 
+#>
+#include <stdio.h>
+void stub() { return; }
+
+epoxy_resolver_stub_t
+resolve_failure(const char* name) {
+    // TODO find a way to throw exceptions without safe-lambda for every procedure
+    printf("Epoxy warning: '%s' symbol could not be found.\n", name);
+    return stub;
+}
+<#
+
+(foreign-code "epoxy_set_resolver_failure_handler(resolve_failure);")
+
 (bind-rename/pattern "^GL_([A-Z_].+)$" "+\\1+")
 (bind-rename/pattern "([^_])([123])D" "\\1-\\2d")
+(bind-rename/pattern "^glBegin$" "gl-begin") ;; to avoid clash with scheme#begin
+(bind-rename/pattern "^glIsList$" "gl-list?") ;; to avoid clash with scheme#list?
 (bind-rename/pattern "^gl" "")
 (bind-rename/pattern "^Is(.*)$" "\\1?")
 
