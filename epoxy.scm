@@ -23,9 +23,9 @@ resolve_failure(const char* name) {
 
 (bind-rename/pattern "^GL_([A-Z_].+)$" "+\\1+")
 (bind-rename/pattern "([^_])([123])D" "\\1-\\2d")
-(bind-rename/pattern "^glBegin$" "gl-begin") ;; to avoid clash with scheme#begin
-(bind-rename/pattern "^glIsList$" "gl-list?") ;; to avoid clash with scheme#list?
 (bind-rename/pattern "^gl" "")
+(bind-rename/pattern "^Begin$" "gl-begin") ;; to avoid clash with scheme#begin
+(bind-rename/pattern "^IsList$" "gl-list?") ;; to avoid clash with scheme#list?
 (bind-rename/pattern "^Is(.*)$" "\\1?")
 
 (bind-options default-renaming: ""

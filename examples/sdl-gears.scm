@@ -98,7 +98,7 @@ static SDL_Surface *screen;
     (gl:normal3f 0.0 0.0 1.0)
 
     ;; Draw front face.
-    (gl:begin gl:+quad-strip+)
+    (gl:gl-begin gl:+quad-strip+)
     (do ((i 0 (+ 1 i))) ((> i teeth))
       (let* ((angle     (/ (* i 2.0 pi) teeth))
 	     (cos-angle (cos angle))
@@ -115,7 +115,7 @@ static SDL_Surface *screen;
     (gl:end)
 
     ;; Draw front sides of teeth.
-    (gl:begin gl:+quads+)
+    (gl:gl-begin gl:+quads+)
     (do ((i 0 (+ 1 i))) ((= i teeth))
       (let ((angle (/ (* i 2.0 pi) teeth)))
 	(gl:vertex3f (* r1 (cos angle))
@@ -135,7 +135,7 @@ static SDL_Surface *screen;
     (gl:normal3f 0.0 0.0 -1.0)
 
     ;; Draw back face.
-    (gl:begin gl:+quad-strip+)
+    (gl:gl-begin gl:+quad-strip+)
     (do ((i 0 (+ 1 i))) ((> i teeth))
       (let* ((angle     (/ (* i 2.0 pi) teeth))
 	     (cos-angle (cos angle))
@@ -152,7 +152,7 @@ static SDL_Surface *screen;
     (gl:end)
 
     ;; Draw back sides of teeth.
-    (gl:begin gl:+quads+)
+    (gl:gl-begin gl:+quads+)
     (do ((i 0 (+ 1 i))) ((= i teeth))
       (let ((angle (/ (* i 2.0 pi) teeth)))
 	(gl:vertex3f (* r1 (cos (+ angle da3)))
@@ -170,7 +170,7 @@ static SDL_Surface *screen;
     (gl:end)
 
     ;; Draw outward faces of teeth.
-    (gl:begin gl:+quad-strip+)
+    (gl:gl-begin gl:+quad-strip+)
     (do ((i 0 (+ 1 i))) ((= i teeth))
       (let* ((angle     (/ (* i 2.0 pi) teeth))
 	     (cos-angle (cos angle))
@@ -219,7 +219,7 @@ static SDL_Surface *screen;
     (gl:shade-model gl:+smooth+)
 
     ;; Draw inside radius cylinder.
-    (gl:begin gl:+quad-strip+)
+    (gl:gl-begin gl:+quad-strip+)
     (do ((i 0 (+ 1 i))) ((> i teeth))
       (let* ((angle     (/ (* i 2.0 pi) teeth))
 	     (cos-angle (cos angle))
@@ -324,3 +324,4 @@ static SDL_Surface *screen;
   (on-paint) )
 
 ((foreign-lambda void "SDL_Quit"))
+
