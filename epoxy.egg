@@ -5,10 +5,6 @@
  (dependencies bind)
  (foreign-dependencies "libepoxy")
  (components
-   (generated-source-file gl.h
-     (source-dependencies "generate-header" "gl-translator.scm")
-     (custom-build "generate-header"))
    (extension epoxy
-     (component-dependencies gl.h)
      (source-dependencies "gl.h")
      (custom-build "build"))))
