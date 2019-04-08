@@ -4,10 +4,13 @@ Bindings for the OpenGL and OpenGL ES APIs.
 
 Every version and profile of these APIs are available out of the box thanks to the Epoxy library. The actual version used is automatically determined by the current GL context (which you can obtain from windowing libraries like SDL or GLFW).
 
-This egg is based on Alex Charlton’s previous work on the opengl-glew egg and is a drop-in replacement for it. It also provides the functionnality of the old opengl egg (fixed pipeline).
+This egg is based on Alex Charlton’s previous work on the opengl-glew egg and is a drop-in replacement for it (except for the `init` procedure that is no longer needed).
+
+It also provides the functionnality of the old opengl egg (fixed pipeline).
 
 ## Requirements
 
+- libepoxy 1.5.3 or higher
 - bind
 
 ## Documentation
